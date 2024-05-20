@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px;
+  margin-bottom: 64px;
 }
 
 .character-card {
@@ -23,7 +23,7 @@
 }
 
 .character-table td {
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #7289da;
 }
 
@@ -35,7 +35,7 @@
 
 .character-details h2 {
   color: #7289da;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .character-details p {

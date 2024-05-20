@@ -29,15 +29,6 @@ const BarChart = () => {
     }
   };
 
-  const handleClick = () => {
-    const characters = characterInput.split(",").map((name) => name.trim());
-    if (characters.length > 5) {
-      alert("Too many characters. Max 5");
-      return;
-    }
-    fetchAllData();
-  };
-
   const fetchAllData = async () => {
     const characterNames = Array.from(
       new Set(characterInput.split(",").map((name) => name.trim()))
@@ -71,8 +62,20 @@ const BarChart = () => {
     }
   };
 
+  const handleClick = () => {
+    const characters = characterInput.split(",").map((name) => name.trim());
+    if (characters.length > 5) {
+      alert("Too many characters. Max 5");
+      return;
+    }
+    fetchAllData();
+  };
+
   useEffect(() => {
     fetchAllData();
+    // we only want to trigger the use effect on mount and never again
+    // so ignore the eslint warning
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -93,12 +96,14 @@ const BarChart = () => {
           <div key={index} className="bar-container">
             <div
               className="bar"
-              style={{ height: `${(character.count / maxCount) * 260}px` }}
+              style={{ height: `${(character.count / maxCount) * 100}%` }}
             >
               <span className="bar-label">{character.count}</span>
             </div>
-            <span className="legend" title={character.names.join("\n")}>
-              {character.names.length > 1 ? `${character.names[0]} (+${character.names.length - 1})` : character.names[0]}
+            <span className="legend" data-title={character.names.join("\n")}>
+              {character.names.length > 1
+                ? `${character.names[0]} (+${character.names.length - 1})`
+                : character.names[0]}
             </span>
           </div>
         ))}
