@@ -30,6 +30,8 @@ const LeastPopular = () => {
     fetchCharacters();
   }, []);
 
+  const getDelay = (index) => `${index * 0.5}s`;
+
   return (
     <div className="character-container">
       <h1>Least Popular Character from Earth (C-137)</h1>
@@ -48,31 +50,54 @@ const LeastPopular = () => {
                 <td>
                   <strong>Character name</strong>
                 </td>
-                <td>{leastPopularCharacter.name}</td>
+                <td
+                  className="character-detail"
+                  style={{ animationDelay: getDelay(0) }}
+                >
+                  {leastPopularCharacter.name}
+                </td>
               </tr>
               <tr>
                 <td>
                   <strong>Origin & Dimension</strong>
                 </td>
-                <td>{leastPopularCharacter.origin.name}</td>
+                <td
+                  className="character-detail"
+                  style={{ animationDelay: getDelay(1) }}
+                >
+                  {leastPopularCharacter.origin.name}
+                </td>
               </tr>
               <tr>
                 <td>
                   <strong>Status</strong>
                 </td>
-                <td>{leastPopularCharacter.status}</td>
+                <td
+                  className="character-detail"
+                  style={{ animationDelay: getDelay(2) }}
+                >
+                  {leastPopularCharacter.status}
+                </td>
               </tr>
               <tr>
                 <td>
                   <strong>Species</strong>
                 </td>
-                <td>{leastPopularCharacter.species}</td>
+                <td
+                  className="character-detail"
+                  style={{ animationDelay: getDelay(3) }}
+                >
+                  {leastPopularCharacter.species}
+                </td>
               </tr>
               <tr>
                 <td>
                   <strong>Gender</strong>
                 </td>
-                <td>
+                <td
+                  className="character-detail"
+                  style={{ animationDelay: getDelay(4) }}
+                >
                   {leastPopularCharacter.gender}{" "}
                   {leastPopularCharacter.gender === "Male" ? "♂️" : "♀️"}
                 </td>
@@ -81,7 +106,12 @@ const LeastPopular = () => {
                 <td>
                   <strong>Popularity</strong>
                 </td>
-                <td>{leastPopularCharacter.episode.length}</td>
+                <td
+                  className="character-detail"
+                  style={{ animationDelay: getDelay(5) }}
+                >
+                  {leastPopularCharacter.episode.length}
+                </td>
               </tr>
             </tbody>
           </table>
